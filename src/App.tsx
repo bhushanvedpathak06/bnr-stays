@@ -98,7 +98,7 @@ function Header() {
 
   return (
     <header className={`site-header ${scrolled || open ? 'header-solid' : ''}`}>
-      <a href="#home" className="wordmark" aria-label="B and R stays, home">
+      <a href="/" className="wordmark" aria-label="B and R stays, home">
         <span>B&amp;R</span> stays
       </a>
       <nav className="desktop-nav" aria-label="Main navigation">
