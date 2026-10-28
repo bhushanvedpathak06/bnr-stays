@@ -122,7 +122,7 @@ function SectionHeading({ eyebrow, children, className = '' }: { eyebrow: string
   return <div className={`section-heading ${className}`}><p className="eyebrow">{eyebrow}</p><h2>{children}</h2></div>
 }
 
-function App() {
+function PropertyPage() {
   const [lightbox, setLightbox] = useState<number | null>(null)
   const [faq, setFaq] = useState<number | null>(0)
 
@@ -334,6 +334,95 @@ function App() {
       )}
     </>
   )
+}
+
+function BrandHome() {
+  return (
+    <>
+      <header className="brand-header">
+        <a href="/" className="wordmark" aria-label="B and R stays home"><span>B&amp;R</span> stays</a>
+        <nav aria-label="Main navigation" className="brand-nav">
+          <a href="#our-stays">Our stays</a>
+          <a href="#our-story">Our story</a>
+          <a href="#brand-contact">Contact</a>
+        </nav>
+        <WhatsAppLink className="button button-dark brand-enquire"><Icon name="whatsapp" className="icon" /> Enquire</WhatsAppLink>
+      </header>
+      <main className="brand-home">
+        <section className="brand-hero">
+          <img src="https://images.unsplash.com/photo-1552858725-a19e7fcd3ac4?auto=format&fit=crop&w=2200&q=90" alt="Warm, calm getaway interior" fetchPriority="high" />
+          <div className="brand-hero-shade" />
+          <div className="brand-hero-content">
+            <p className="eyebrow">A collection of little escapes</p>
+            <h1>Find your place<br /><em>to slow down.</em></h1>
+            <p>Thoughtful stays for time together, quiet moments, and getting away from the everyday.</p>
+            <a className="button button-light" href="#our-stays">Discover our stays <Icon name="arrow" className="icon" /></a>
+          </div>
+          <span className="brand-hero-note">B&amp;R stays · Karjat and beyond</span>
+        </section>
+        <section className="brand-stays section" id="our-stays">
+          <div className="brand-stays-heading">
+            <div><p className="eyebrow">Find your escape</p><h2>Our <em>stays.</em></h2></div>
+            <p>Every stay has its own character. Explore each space to find the one that feels like you.</p>
+          </div>
+          <div className="stay-card-grid">
+            <article className="stay-card">
+              <a className="stay-card-image" href="/stays/the-two-of-us" aria-label="Explore The Two of Us by B&R Stays">
+                <img src="https://images.unsplash.com/photo-1722248214599-893454399a65?auto=format&fit=crop&w=1400&q=85" alt="Warm, intimate living space with natural wooden details" loading="lazy" />
+                <span className="stay-card-number">01 / OUR FIRST STAY</span>
+                <span className="stay-card-arrow"><Icon name="arrow" className="icon" /></span>
+              </a>
+              <div className="stay-card-copy">
+                <p className="eyebrow">Karjat · Maharashtra</p>
+                <h3>The Two of Us</h3>
+                <p className="stay-card-byline">by B&amp;R stays</p>
+                <p>A cozy little escape made for slower mornings, warm evenings, and time that belongs to just the two of you.</p>
+                <a className="text-link dark-link" href="/stays/the-two-of-us">Explore this stay <Icon name="arrow" className="icon" /></a>
+              </div>
+            </article>
+            <article className="stay-card stay-card-coming">
+              <div className="stay-card-image stay-card-placeholder">
+                <div><span className="coming-spark">✳</span><p>Another little escape<br />is on its way.</p></div>
+                <span className="stay-card-number">02 / COMING SOON</span>
+              </div>
+              <div className="stay-card-copy">
+                <p className="eyebrow">A new destination</p>
+                <h3>Stay tuned</h3>
+                <p className="stay-card-byline">Another B&amp;R stays experience</p>
+                <p>We’re dreaming up our next stay. More details will be shared when it’s ready to welcome you.</p>
+                <span className="coming-label">Coming in the future</span>
+              </div>
+            </article>
+          </div>
+          <p className="brand-stays-footnote">More stays will be added here as the B&amp;R collection grows.</p>
+        </section>
+        <section className="brand-story section" id="our-story">
+          <div className="brand-story-mark">B<span>&amp;</span>R <small>stays</small></div>
+          <div><p className="eyebrow">A little about us</p><h2>Made for moments<br /><em>that matter.</em></h2><p>We’re building B&amp;R stays around a simple idea: a good getaway gives you room to pause, reconnect, and make memories together. Each property in our collection will have its own story, with the same thoughtful spirit at its heart.</p></div>
+        </section>
+        <section className="brand-contact" id="brand-contact">
+          <p className="eyebrow">Your next little escape</p>
+          <h2>Let’s find your<br /><em>place to pause.</em></h2>
+          <WhatsAppLink className="button button-light"><Icon name="whatsapp" className="icon" /> Talk to us</WhatsAppLink>
+        </section>
+      </main>
+      <footer className="brand-footer">
+        <a href="/" className="wordmark footer-wordmark"><span>B&amp;R</span> stays</a>
+        <p>Thoughtful stays. Meaningful moments.</p>
+        <p>© {new Date().getFullYear()} B&amp;R stays. All rights reserved.</p>
+      </footer>
+    </>
+  )
+}
+
+function App() {
+  const [pathname, setPathname] = useState(window.location.pathname)
+  useEffect(() => {
+    const syncPath = () => setPathname(window.location.pathname)
+    window.addEventListener('popstate', syncPath)
+    return () => window.removeEventListener('popstate', syncPath)
+  }, [])
+  return pathname.startsWith('/stays/the-two-of-us') ? <PropertyPage /> : <BrandHome />
 }
 
 export default App
