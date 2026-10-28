@@ -403,8 +403,12 @@ function BrandHome() {
         <section className="brand-contact" id="brand-contact">
           <p className="eyebrow">Your next little escape</p>
           <h2>Let’s find your<br /><em>place to pause.</em></h2>
-          <WhatsAppLink className="button button-light"><Icon name="whatsapp" className="icon" /> Talk to us on WhatsApp</WhatsAppLink>
-          <p><a href="tel:+918369516813">Call us: +91 83695 16813</a></p>
+          <p className="brand-contact-intro">Have a question or ready to plan your stay? We’re just a message or call away.</p>
+          <div className="brand-contact-actions">
+            <WhatsAppLink className="button button-light"><Icon name="whatsapp" className="icon" /> Chat with us on WhatsApp</WhatsAppLink>
+            <a className="button button-contact-call" href="tel:+918369516813"><span aria-hidden="true">↗</span> Call us <span className="contact-phone-number">+91 83695 16813</span></a>
+          </div>
+          <p className="brand-contact-note">Personal assistance for your Karjat getaway</p>
         </section>
       </main>
       <footer className="brand-footer">
