@@ -403,12 +403,13 @@ function BrandHome() {
         <section className="brand-contact" id="brand-contact">
           <p className="eyebrow">Your next little escape</p>
           <h2>Let’s find your<br /><em>place to pause.</em></h2>
-          <p className="brand-contact-intro">Have a question or ready to plan your stay? We’re just a message or call away.</p>
+          <p className="brand-contact-intro">Have a question or ready to plan your stay? Choose the way that feels easiest — we’re happy to help.</p>
           <div className="brand-contact-actions">
-            <WhatsAppLink className="button button-light"><Icon name="whatsapp" className="icon" /> Chat with us on WhatsApp</WhatsAppLink>
+            <WhatsAppLink className="button button-light"><Icon name="whatsapp" className="icon" /> Chat on WhatsApp</WhatsAppLink>
             <a className="button button-contact-call" href="tel:+918369516813"><span aria-hidden="true">↗</span> Call us <span className="contact-phone-number">+91 83695 16813</span></a>
+            <a className="button button-contact-email" href="mailto:hello.bnrstays@gmail.com?subject=Enquiry%20for%20B%26R%20Stays"><span className="email-icon" aria-hidden="true">✉</span> Email us <span className="contact-email-address">hello.bnrstays@gmail.com</span></a>
           </div>
-          <p className="brand-contact-note">Personal assistance for your Karjat getaway</p>
+          <p className="brand-contact-note">Personal assistance for your Karjat getaway · No booking is confirmed until we reply</p>
         </section>
       </main>
       <footer className="brand-footer">
