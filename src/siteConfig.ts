@@ -1,6 +1,6 @@
 export const siteConfig = {
   brand: 'B&R stays',
-  whatsappNumber: '91XXXXXXXXXX', // Replace with the real number, including country code.
+  whatsappNumber: '918369516813',
   whatsappMessage:
     "Hi B&R stays! I'm interested in booking your Karjat stay. Could you please share the availability, pricing, and booking details?",
   location: {
