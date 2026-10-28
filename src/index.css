@@ -326,3 +326,67 @@ footer nav a:hover { color: var(--sand); }
   .brand-story { grid-template-columns: 1fr; gap: 2rem; }
   .brand-story-mark { font-size: 3.2rem; }
 }
+
+
+/* Refined contact section: clear hierarchy and balanced CTAs */
+.brand-contact-intro {
+  max-width: 34rem;
+  margin: 0 auto 2rem;
+  color: rgba(255, 252, 244, .76);
+  font-size: clamp(.95rem, 1.3vw, 1.08rem);
+  line-height: 1.8;
+}
+.brand-contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: center;
+  gap: .85rem;
+  width: min(100%, 38rem);
+}
+.brand-contact-actions .button {
+  min-height: 3.5rem;
+  gap: .65rem;
+  padding: .9rem 1.25rem;
+  font-size: .68rem;
+  letter-spacing: .055em;
+}
+.brand-contact-actions .button-light {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .08);
+}
+.button-contact-call {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: .55rem;
+  border: 1px solid rgba(255, 252, 244, .42);
+  background: transparent;
+  color: var(--ivory);
+  text-decoration: none;
+  transition: background .2s, border-color .2s, transform .2s;
+}
+.button-contact-call:hover {
+  background: rgba(255, 252, 244, .09);
+  border-color: rgba(255, 252, 244, .8);
+  transform: translateY(-2px);
+}
+.contact-phone-number {
+  font-weight: 600;
+  letter-spacing: .02em;
+  white-space: nowrap;
+}
+.brand-contact-note {
+  margin: 1.5rem 0 0;
+  color: rgba(255, 252, 244, .55);
+  font-size: .7rem;
+  letter-spacing: .035em;
+}
+@media (max-width: 560px) {
+  .brand-contact { padding: 5rem 1.25rem; }
+  .brand-contact h2 { font-size: clamp(3rem, 13vw, 4rem); }
+  .brand-contact-intro { max-width: 22rem; margin-bottom: 1.5rem; font-size: .92rem; }
+  .brand-contact-actions { flex-direction: column; width: min(100%, 22rem); }
+  .brand-contact-actions .button { width: 100%; }
+  .brand-contact-note { line-height: 1.6; }
+}
