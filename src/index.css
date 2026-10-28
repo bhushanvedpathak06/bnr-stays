@@ -390,3 +390,38 @@ footer nav a:hover { color: var(--sand); }
   .brand-contact-actions .button { width: 100%; }
   .brand-contact-note { line-height: 1.6; }
 }
+
+
+/* Email contact CTA — aligned with the existing premium contact actions */
+.button-contact-email {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: .55rem;
+  border: 1px solid rgba(255, 252, 244, .42);
+  background: rgba(255, 252, 244, .055);
+  color: var(--ivory);
+  text-decoration: none;
+  transition: background .2s, border-color .2s, transform .2s;
+}
+.button-contact-email:hover {
+  background: rgba(255, 252, 244, .12);
+  border-color: rgba(255, 252, 244, .8);
+  transform: translateY(-2px);
+}
+.email-icon { font-size: 1.05rem; line-height: 1; }
+.contact-email-address {
+  font-weight: 500;
+  letter-spacing: .01em;
+  overflow-wrap: anywhere;
+}
+@media (min-width: 561px) {
+  .brand-contact-actions .button { flex: 1 1 11rem; }
+  .contact-phone-number, .contact-email-address { font-size: .88em; }
+}
+@media (max-width: 560px) {
+  .brand-contact-actions { align-items: stretch; }
+  .brand-contact-actions .button { min-height: 3.6rem; }
+  .contact-email-address { width: 100%; font-size: .82rem; }
+}
