@@ -1,0 +1,10 @@
+{
+  "description": "A premium, responsive website showcasing a cozy private stay in Karjat with seamless WhatsApp booking enquiries for couples seeking a peaceful getaway.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
