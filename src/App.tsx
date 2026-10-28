@@ -154,7 +154,7 @@ function PropertyPage() {
   const submitEnquiry = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     const data = new FormData(event.currentTarget)
-    const message = `Hi B&R stays! I'd like to enquire about a stay.\n\nName: ${data.get('name')}\nCheck-in: ${data.get('checkin')}\nCheck-out: ${data.get('checkout')}\nGuests: ${data.get('guests')}\nMessage: ${data.get('message') || '—'}\n\nCould you please share availability, pricing, and booking details?`
+    const message = `Hi B&R stays! I'd like to enquire about The Two of Us in Karjat.\n\nName: ${data.get('name')}\nCheck-in: ${data.get('checkin')}\nCheck-out: ${data.get('checkout')}\nGuests: ${data.get('guests')}\nMessage: ${data.get('message') || '—'}\n\nCould you please share availability, pricing, and booking details?`
     window.open(getWhatsAppUrl(message), '_blank', 'noopener,noreferrer')
   }
 
@@ -403,7 +403,8 @@ function BrandHome() {
         <section className="brand-contact" id="brand-contact">
           <p className="eyebrow">Your next little escape</p>
           <h2>Let’s find your<br /><em>place to pause.</em></h2>
-          <WhatsAppLink className="button button-light"><Icon name="whatsapp" className="icon" /> Talk to us</WhatsAppLink>
+          <WhatsAppLink className="button button-light"><Icon name="whatsapp" className="icon" /> Talk to us on WhatsApp</WhatsAppLink>
+          <p><a href="tel:+918369516813">Call us: +91 83695 16813</a></p>
         </section>
       </main>
       <footer className="brand-footer">
