@@ -13,7 +13,7 @@ function Arrow() {
 
 export default function TestimonialsPage() {
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'instant' })
+    window.scrollTo(0, 0)
   }, [])
 
   return (
