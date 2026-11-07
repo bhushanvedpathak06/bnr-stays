@@ -1,5 +1,6 @@
 import { FormEvent, KeyboardEvent, useEffect, useState } from 'react'
 import { getWhatsAppUrl, siteConfig } from './siteConfig'
+import TestimonialsPage from './TestimonialsPage'
 
 type IconName =
   | 'arrow'
@@ -344,6 +345,7 @@ function BrandHome() {
         <nav aria-label="Main navigation" className="brand-nav">
           <a href="#our-stays">Our stays</a>
           <a href="#our-story">Our story</a>
+          <a href="/testimonials">Testimonials</a>
           <a href="#brand-contact">Contact</a>
         </nav>
         <WhatsAppLink className="button button-dark brand-enquire"><Icon name="whatsapp" className="icon" /> Enquire</WhatsAppLink>
@@ -428,7 +430,9 @@ function App() {
     window.addEventListener('popstate', syncPath)
     return () => window.removeEventListener('popstate', syncPath)
   }, [])
-  return pathname.startsWith('/stays/the-two-of-us') ? <PropertyPage /> : <BrandHome />
+  if (pathname.startsWith('/stays/the-two-of-us')) return <PropertyPage />
+  if (pathname.startsWith('/testimonials')) return <TestimonialsPage />
+  return <BrandHome />
 }
 
 export default App
