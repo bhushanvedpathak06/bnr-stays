@@ -1,20 +1,36 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { getWhatsAppUrl } from './siteConfig'
 
-const testimonials = [
-  { quote: 'A lovely little pause from the everyday. The space felt warm, calm, and thoughtfully put together.', name: 'Illustrative sample', detail: 'Replace with an approved guest review', initials: 'S' },
-  { quote: 'Exactly the kind of quiet getaway we were looking for. Slow mornings and time to simply be together.', name: 'Illustrative sample', detail: 'Replace with an approved guest review', initials: 'S' },
-  { quote: 'The atmosphere made the stay feel special. A cozy place to unwind and make a few memories.', name: 'Illustrative sample', detail: 'Replace with an approved guest review', initials: 'S' },
-]
+// Add up to 10 real, permission-approved guest reviews here.
+// Each item supports: quote, name, detail, rating (1-5), photo (image URL), initials.
+const testimonials: Array<{
+  quote: string
+  name: string
+  detail: string
+  rating: number
+  photo?: string
+  initials: string
+}> = []
+
+const MAX_TESTIMONIALS = 10
 
 function Arrow() {
   return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6" /></svg>
 }
 
 export default function TestimonialsPage() {
+  const [activeIndex, setActiveIndex] = useState(0)
+  const total = Math.min(testimonials.length, MAX_TESTIMONIALS)
+  const active = testimonials[activeIndex]
+
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
+
+  const goTo = (index: number) => {
+    if (!total) return
+    setActiveIndex((index + total) % total)
+  }
 
   return (
     <main className="testimonials-page">
@@ -44,21 +60,49 @@ export default function TestimonialsPage() {
       <section className="testimonials-intro" id="guest-notes">
         <p className="eyebrow">The guestbook</p>
         <h2>Little moments.<br /><em>Lovely memories.</em></h2>
-        <p>We believe the best part of a getaway is how it makes you feel. These sample notes show how real guest feedback can be presented. Replace them with genuine reviews shared with your permission before publishing.</p>
+        <p>Real words, real faces, and little moments our guests take home. Every story is shared with care.</p>
       </section>
 
-      <section className="testimonials-grid" aria-label="Guest testimonials">
-        {testimonials.map((item, index) => (
-          <article className={`testimonial-card testimonial-card-${index + 1}`} key={item.name}>
-            <div className="testimonial-card-top"><span className="testimonial-number">0{index + 1} / SAMPLE COPY</span><span className="testimonial-stars" aria-label="Five decorative stars">✳ ✳ ✳</span></div>
-            <span className="testimonial-quote-mark" aria-hidden="true">“</span>
-            <blockquote>{item.quote}</blockquote>
-            <div className="testimonial-author">
-              <span className="testimonial-avatar">{item.initials}</span>
-              <span><strong>{item.name}</strong><small>{item.detail}</small></span>
+      <section className="testimonials-carousel" aria-label="Guest testimonials">
+        {active ? (
+          <>
+            <article className="testimonial-feature-card" aria-live="polite">
+              <div className="testimonial-feature-photo">
+                {active.photo ? <img src={active.photo} alt={`${active.name}, B&R Stays guest`} /> : <div className="testimonial-photo-fallback">{active.initials}</div>}
+              </div>
+              <div className="testimonial-feature-copy">
+                <div className="testimonial-card-top">
+                  <span className="testimonial-number">GUEST STORY · {String(activeIndex + 1).padStart(2, '0')}</span>
+                  <span className="testimonial-stars" aria-label={`${active.rating} out of 5 stars`}>{'★'.repeat(Math.max(0, Math.min(5, active.rating)))}</span>
+                </div>
+                <span className="testimonial-quote-mark" aria-hidden="true">“</span>
+                <blockquote>{active.quote}</blockquote>
+                <div className="testimonial-author">
+                  <span><strong>{active.name}</strong><small>{active.detail}</small></span>
+                </div>
+              </div>
+            </article>
+            <div className="testimonial-carousel-controls">
+              <span className="testimonial-count">{String(activeIndex + 1).padStart(2, '0')} <i>/</i> {String(total).padStart(2, '0')}</span>
+              <div className="testimonial-dots" aria-label="Choose a guest story">
+                {testimonials.slice(0, MAX_TESTIMONIALS).map((item, index) => (
+                  <button key={`${item.name}-${index}`} type="button" className={index === activeIndex ? 'is-active' : ''} onClick={() => goTo(index)} aria-label={`Show guest story ${index + 1}`} aria-current={index === activeIndex ? 'true' : undefined} />
+                ))}
+              </div>
+              <div className="testimonial-arrows">
+                <button type="button" onClick={() => goTo(activeIndex - 1)} aria-label="Previous testimonial">←</button>
+                <button type="button" onClick={() => goTo(activeIndex + 1)} aria-label="Next testimonial">→</button>
+              </div>
             </div>
-          </article>
-        ))}
+          </>
+        ) : (
+          <div className="testimonials-empty-state">
+            <span className="testimonial-quote-mark" aria-hidden="true">“</span>
+            <p className="eyebrow">A guestbook in the making</p>
+            <h3>Your guests’ stories<br /><em>belong here.</em></h3>
+            <p>We’re saving this space for genuine guest words and photographs. Up to ten stories can be featured here.</p>
+          </div>
+        )}
       </section>
 
       <section className="testimonials-values">
