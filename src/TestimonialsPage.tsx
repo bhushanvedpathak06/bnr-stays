@@ -2,9 +2,9 @@ import { useEffect } from 'react'
 import { getWhatsAppUrl } from './siteConfig'
 
 const testimonials = [
-  { quote: 'A lovely little pause from the everyday. The space felt warm, calm, and thoughtfully put together.', name: 'A guest from Mumbai', detail: 'The Two of Us · Karjat', initials: 'M' },
-  { quote: 'Exactly the kind of quiet getaway we were looking for. Slow mornings and time to simply be together.', name: 'A guest from Pune', detail: 'The Two of Us · Karjat', initials: 'P' },
-  { quote: 'The atmosphere made the stay feel special. A cozy place to unwind and make a few memories.', name: 'A guest experience', detail: 'The Two of Us · Karjat', initials: 'B' },
+  { quote: 'A lovely little pause from the everyday. The space felt warm, calm, and thoughtfully put together.', name: 'Illustrative sample', detail: 'Replace with an approved guest review', initials: 'S' },
+  { quote: 'Exactly the kind of quiet getaway we were looking for. Slow mornings and time to simply be together.', name: 'Illustrative sample', detail: 'Replace with an approved guest review', initials: 'S' },
+  { quote: 'The atmosphere made the stay feel special. A cozy place to unwind and make a few memories.', name: 'Illustrative sample', detail: 'Replace with an approved guest review', initials: 'S' },
 ]
 
 function Arrow() {
@@ -44,13 +44,13 @@ export default function TestimonialsPage() {
       <section className="testimonials-intro" id="guest-notes">
         <p className="eyebrow">The guestbook</p>
         <h2>Little moments.<br /><em>Lovely memories.</em></h2>
-        <p>We believe the best part of a getaway is how it makes you feel. These notes celebrate the warmth, calm, and togetherness we hope every guest takes home.</p>
+        <p>We believe the best part of a getaway is how it makes you feel. These sample notes show how real guest feedback can be presented. Replace them with genuine reviews shared with your permission before publishing.</p>
       </section>
 
       <section className="testimonials-grid" aria-label="Guest testimonials">
         {testimonials.map((item, index) => (
           <article className={`testimonial-card testimonial-card-${index + 1}`} key={item.name}>
-            <div className="testimonial-card-top"><span className="testimonial-number">0{index + 1} / GUEST NOTE</span><span className="testimonial-stars" aria-label="Five decorative stars">✳ ✳ ✳</span></div>
+            <div className="testimonial-card-top"><span className="testimonial-number">0{index + 1} / SAMPLE COPY</span><span className="testimonial-stars" aria-label="Five decorative stars">✳ ✳ ✳</span></div>
             <span className="testimonial-quote-mark" aria-hidden="true">“</span>
             <blockquote>{item.quote}</blockquote>
             <div className="testimonial-author">
